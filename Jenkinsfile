@@ -15,9 +15,15 @@ pipeline {
             }
         }
 
+        stage('Stop Old Containers') {
+            steps {
+                bat 'docker-compose down'
+            }
+        }
+
         stage('Run Container') {
             steps {
-                bat 'docker-compose up -d'
+                bat 'docker-compose up -d --build'
             }
         }
 
