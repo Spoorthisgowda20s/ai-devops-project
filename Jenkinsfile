@@ -1,45 +1,24 @@
 pipeline {
+
     agent any
 
     stages {
 
-        stage('Clone Code') {
+        stage('Clone Repo') {
             steps {
-                git 'https://github.com/YOURUSERNAME/ai-devops-project.git'
-            }
-        }
-
-        stage('Build App') {
-            steps {
-                dir('aiapp') {
-                    bat 'mvn clean package'
-                }
+                git 'https://github.com/YOUR_GITHUB/ai-devops-project.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                dir('aiapp') {
-                    bat 'docker build -t aiapp .'
-                }
+                sh 'docker build -t ai-sales-app .'
             }
         }
 
-        stage('Run DEV Container') {
+        stage('Run Container') {
             steps {
-                bat 'docker run -d -p 8081:8080 -e ENV=DEV aiapp'
-            }
-        }
-
-        stage('Run TEST Container') {
-            steps {
-                bat 'docker run -d -p 8082:8080 -e ENV=TEST aiapp'
-            }
-        }
-
-        stage('Run PROD Container') {
-            steps {
-                bat 'docker run -d -p 8083:8080 -e ENV=PROD aiapp'
+                sh 'docker run -d -p 8081:8081 ai-sales-app'
             }
         }
 

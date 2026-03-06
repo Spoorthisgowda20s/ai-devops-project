@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Sales Prediction Dashboard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<h1>AI Sales Forecast System</h1>
+
+<form action="/predict" method="post">
+
+<label>Marketing Spend ($)</label>
+<input type="number" name="marketing" required>
+
+<label>Customer Visits</label>
+<input type="number" name="visits" required>
+
+<label>Product Price ($)</label>
+<input type="number" name="price" required>
+
+<button type="submit">Predict Sales</button>
+
+</form>
+
+<h2>{{ prediction_text }}</h2>
+
+</body>
+</html>
