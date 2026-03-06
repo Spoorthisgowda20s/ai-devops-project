@@ -5,10 +5,10 @@ pipeline {
     stages {
 
         stage('Clone Repo') {
-	    steps {
+            steps {
                 git 'https://github.com/Spoorthisgowda20s/ai-devops-project.git'
-    }
-}
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
