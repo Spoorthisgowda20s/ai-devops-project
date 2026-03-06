@@ -1,11 +1,6 @@
-FROM python:3.10
-
+FROM python:3.9-slim
 WORKDIR /app
-
-COPY . .
-
-RUN pip install -r requirements.txt
-
-EXPOSE 8081
-
+COPY . /app
+RUN pip install flask numpy scikit-learn
+EXPOSE 5000
 CMD ["python", "app.py"]
